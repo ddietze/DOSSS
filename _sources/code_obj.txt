@@ -1,0 +1,9 @@
+The Object Modules
+==================
+
+:py:mod:`core.opsim_objectbase`
+-------------------------------------
+
+.. automodule:: core.opsim_objectbase
+    :members:
+

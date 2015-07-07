@@ -1,0 +1,15 @@
+The Geometry Modules
+====================
+
+:py:mod:`core.opsim_geo`
+------------------------------
+
+.. automodule:: core.opsim_geo
+    :members:
+
+
+:py:mod:`core.opsim_lightray`
+-----------------------------------
+
+.. automodule:: core.opsim_lightray
+    :members:

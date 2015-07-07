@@ -1,0 +1,21 @@
+Menu *File*
+===========
+
+**New**
+   Reset DOSSS and create a new scene.
+   
+**Open..**
+   Load a previously saved DOSSS scene.
+   
+**Save..**
+   Save the current scene.
+ 
+**Save as..**
+   Save the current scene under a new name.
+   
+**Export..**
+   Export the current scene as PNG image or SVG vector graphic. In the case of the PNG, DOSSS saves actually a screenshot of the currently visible part of the client window - not the entire scene.
+
+**Exit**
+   Leave DOSSS.
+   

@@ -1,0 +1,333 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to create new objects? &mdash; Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation" href="index.html" />
+    <link rel="prev" title="The Object Modules" href="code_obj.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code_obj.html" title="The Object Modules"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How to create new objects?</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="code_obj.html"
+                        title="previous chapter">The Object Modules</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/extending.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-create-new-objects">
+<h1>How to create new objects?<a class="headerlink" href="#how-to-create-new-objects" title="Permalink to this headline">¶</a></h1>
+<p>Extending DOSSS is rather easy. To create a new object, create a new object class derived from <code class="xref py py-class docutils literal"><span class="pre">DOSSSObject</span></code> and save it in a file with the exactly same name as the class object, i.e., <strong>MyFancyObject</strong> goes to <strong>MyFancyObject.py</strong>. In order for DOSSS to find your new object, place the file in the <em>objects</em> folder. The new object will then be automatically loaded and added to the library.</p>
+<p>For your object to actually do something, you have to overwrite the following four interface functions:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="code_obj.html#core.opsim_objectbase.DOSSSObject.GetDisplayPoints" title="core.opsim_objectbase.DOSSSObject.GetDisplayPoints"><code class="xref py py-func docutils literal"><span class="pre">GetDisplayPoints()</span></code></a>:</dt>
+<dd><p class="first last">Returns a list of points for drawing the object into the ClientDC.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="code_obj.html#core.opsim_objectbase.DOSSSObject.Intersection" title="core.opsim_objectbase.DOSSSObject.Intersection"><code class="xref py py-func docutils literal"><span class="pre">Intersection()</span></code></a>:</dt>
+<dd><p class="first last">Returns some information about the intersection with a light ray: intersection point, distance of travel, emerging rays.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="code_obj.html#core.opsim_objectbase.DOSSSObject.ShowPropertyDialog" title="core.opsim_objectbase.DOSSSObject.ShowPropertyDialog"><code class="xref py py-func docutils literal"><span class="pre">ShowPropertyDialog()</span></code></a>:</dt>
+<dd><p class="first last">Show the property dialog box for the object.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="code_obj.html#core.opsim_objectbase.DOSSSObject.GetLight" title="core.opsim_objectbase.DOSSSObject.GetLight"><code class="xref py py-func docutils literal"><span class="pre">GetLight()</span></code></a>:</dt>
+<dd><p class="first last">Returns a list of light rays if the object is a light source.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>In addition, you have to provide a unique name / identifier for the object in the <a class="reference internal" href="code_obj.html#core.opsim_objectbase.DOSSSObject.name" title="core.opsim_objectbase.DOSSSObject.name"><code class="xref py py-attr docutils literal"><span class="pre">name</span></code></a> class attribute, which will then be used in the objects menu.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>In the following I will give a short example of how to extend DOSSS by creating a new object. The code is taken from DOSSS_GlassSlab and represents a rectangular piece of glass.</p>
+<p>First, derive a new class from <code class="xref py py-class docutils literal"><span class="pre">DOSSSObject</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># for the dialog box</span>
+<span class="kn">import</span> <span class="nn">wx</span>
+
+<span class="c"># for the object base class</span>
+<span class="kn">from</span> <span class="nn">core.opsim_objectbase</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># when creating a light source, also import the following</span>
+<span class="kn">from</span> <span class="nn">core.opsim_lightray</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="k">class</span> <span class="nc">DOSSS_GlassSlab</span><span class="p">(</span><span class="n">DOSSSObject</span><span class="p">):</span>
+
+    <span class="c"># make sure that all parameters have default values - this is important for the automatic import</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xpos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ypos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">ior</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">):</span>
+
+        <span class="c"># call the parent constructor</span>
+        <span class="n">DOSSSObject</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">)</span>
+
+        <span class="c"># assign the object&#39;s parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refractiveIndex</span> <span class="o">=</span> <span class="n">ior</span>
+
+        <span class="c"># give it a unique identifier</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;Glass Slab&quot;</span>
+</pre></div>
+</div>
+<p>Now, you have to overwrite the interface functions. The first one is responsible for drawing the object to the screen.
+The object will be drawn as a poly line in the order the points are added to the list. The last point is automatically connected with the first one:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">GetDisplayPoints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># the points&#39; coordinates have to be given in the objects coordinate system</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>Next, overwrite the interface function for calculating the intersection with a light ray. This function is the actual work horse and does all the work. Make sure your calculations are correct, as this function completely determines the optical properties:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">Intersection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">line</span><span class="p">):</span>
+    <span class="c"># first, transform the light ray into the object&#39;s coordinate system</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ProjectIntoObjectCosy</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="c"># second, test for intersection:</span>
+    <span class="c"># this is done by checking every segment of the object for intersection</span>
+    <span class="c"># if a point is found, it is stored together with the distance to the rays origin</span>
+    <span class="c"># and a list of emerging rays (transmitted or reflected)</span>
+    <span class="c"># at the end, the point with the shortest distance along the light ray is picked and returned</span>
+
+    <span class="c"># create a set of vectors corresponding to the four corners of the glass slab</span>
+    <span class="n">tl</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">tr</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">br</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">bl</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c"># prepare return values</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">d0</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="n">er</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># now test for intersection using the built in geometric functions..</span>
+
+    <span class="c"># get a line corresponding to the first (upper) side of the slab</span>
+    <span class="n">lb</span> <span class="o">=</span> <span class="n">getLineThroughPoints</span><span class="p">(</span><span class="n">tl</span><span class="p">,</span> <span class="n">tr</span><span class="p">)</span>
+
+    <span class="c"># calculate the intersection using the bounded_intersection() method,</span>
+    <span class="c"># as the intersection should lie between the two corner points</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">lb</span><span class="o">.</span><span class="n">bounded_intersection</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">tl</span><span class="p">,</span> <span class="n">tr</span><span class="p">)</span>
+
+    <span class="c"># if there is an intersection, calculate the distance of this point along the light ray</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">a</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+        <span class="c"># if it is smaller than the distance to any previously found intersection, keep this point</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">d</span> <span class="o">&gt;</span> <span class="mf">1e-7</span> <span class="ow">and</span> <span class="p">(</span><span class="n">d0</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">d0</span><span class="p">)):</span>
+            <span class="c"># distance to intersection</span>
+            <span class="n">d0</span> <span class="o">=</span> <span class="n">d</span>
+
+            <span class="c"># intersection point</span>
+            <span class="n">p0</span> <span class="o">=</span> <span class="n">p</span>
+
+            <span class="c"># emitted rays as list</span>
+            <span class="c"># Snell() expects the surface normal to point outwards, i.e. from glass to vacuum</span>
+            <span class="n">er</span> <span class="o">=</span> <span class="p">[</span><span class="n">DOSSSLine</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="n">Snell</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">u</span><span class="p">,</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">refractiveIndex</span><span class="p">))]</span>
+
+    <span class="c"># repeat for the other sides...</span>
+    <span class="c"># ...</span>
+    <span class="c"># ...</span>
+
+    <span class="c"># finally, the intersection and the emitted rays have to be transformed back into the laboratory frame</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">p0</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">):</span>
+        <span class="c"># note the 1 in the projection function; this tells DOSSS to do the reverse transformation</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ProjectIntoObjectCosy</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># do the same for all emerging beams</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">er</span><span class="p">)):</span>
+            <span class="n">er</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ProjectIntoObjectCosy</span><span class="p">(</span><span class="n">er</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c"># return values are: [intersection point, distance of travel, [emerging rays]]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p0</span><span class="p">,</span> <span class="n">d0</span><span class="p">,</span> <span class="n">er</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>And the last function to overwrite is the property dialog. This dialog is used to control the appearance and optical properties of the object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">ShowPropertyDialog</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+    <span class="c"># first, create the options list</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c"># there are general options regarding the position</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Position X&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Position Y&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Rotate&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span><span class="p">])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;FlipH&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flip_h</span><span class="p">])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;FlipV&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">flip_v</span><span class="p">])</span>
+
+    <span class="c"># and object specific properties, like width, height and refractive index</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Width&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Height&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="s">&quot;Refractive Index&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">refractiveIndex</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+    <span class="c"># second, open the standard dialog with the options list as parameter</span>
+    <span class="n">dlg</span> <span class="o">=</span> <span class="n">DOSSS_PropertyDialog</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dlg</span><span class="o">.</span><span class="n">ShowModal</span><span class="p">()</span> <span class="o">==</span> <span class="n">wx</span><span class="o">.</span><span class="n">ID_OK</span><span class="p">):</span>
+
+        <span class="c"># third, read out the new values and store</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="n">dlg</span><span class="o">.</span><span class="n">getOptions</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flip_h</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">flip_v</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">refractiveIndex</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+
+    <span class="c"># finally, destroy the dialog object</span>
+    <span class="n">dlg</span><span class="o">.</span><span class="n">Destroy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you are about to create a new light source, you also have to overwrite the following function (code example taken from DOSSS_ParallelLight):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># this function applies only for light sources</span>
+<span class="c"># returns a list of DOSSS_LightRay - objects</span>
+<span class="c"># for an object to be a light source, the &#39;lightsource&#39; flag has to be set</span>
+<span class="k">def</span> <span class="nf">GetLight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">rays</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">noRays</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noRays</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">print</span> <span class="n">a0</span><span class="p">,</span> <span class="n">da</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a0</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noRays</span><span class="p">)):</span>
+        <span class="n">av</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a0</span><span class="p">)</span>
+        <span class="n">uv</span> <span class="o">=</span> <span class="n">DOSSSVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">a0</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">da</span>
+        <span class="c"># project vectors in LabSpace</span>
+        <span class="n">uv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">av</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">project</span><span class="p">(</span><span class="n">av</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># create a list of DOSSS_LightRays</span>
+        <span class="n">rays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">DOSSS_LightRay</span><span class="p">(</span><span class="n">av</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">av</span><span class="o">.</span><span class="n">y</span><span class="p">(),</span> <span class="n">uv</span><span class="o">.</span><span class="n">x</span><span class="p">(),</span> <span class="n">uv</span><span class="o">.</span><span class="n">y</span><span class="p">()))</span>
+
+    <span class="k">return</span> <span class="n">rays</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code_obj.html" title="The Object Modules"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Daniel Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

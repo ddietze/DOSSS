@@ -1,0 +1,21 @@
+Menu *Display*
+==============
+
+**25%** to **800%**
+   Select zoom level.
+
+**Show Grid**
+   Whether to display the grid points or not.
+
+**Snap to Grid**
+   Controls whether objects snap to the grid when translated using the mouse or the keyboard commands. This does not affect placing objects with the property dialog.
+ 
+**Set Grid Size..**
+   Opens a control dialog where the user can enter a new grid spacing.
+  
+**Center Scene**
+   Move the origin to the upper left corner of the client area.
+   
+**Redraw Screen**
+   Redraw the scene.
+

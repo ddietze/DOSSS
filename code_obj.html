@@ -1,0 +1,397 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Object Modules &mdash; Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation" href="index.html" />
+    <link rel="up" title="Documentation of Modules" href="code.html" />
+    <link rel="next" title="How to create new objects?" href="extending.html" />
+    <link rel="prev" title="The Geometry Modules" href="code_geo.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="extending.html" title="How to create new objects?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code_geo.html" title="The Geometry Modules"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="code.html" accesskey="U">Documentation of Modules</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Object Modules</a><ul>
+<li><a class="reference internal" href="#module-core.opsim_objectbase"><code class="docutils literal"><span class="pre">core.opsim_objectbase</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="code_geo.html"
+                        title="previous chapter">The Geometry Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="extending.html"
+                        title="next chapter">How to create new objects?</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code_obj.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-object-modules">
+<h1>The Object Modules<a class="headerlink" href="#the-object-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-core.opsim_objectbase">
+<span id="core-opsim-objectbase"></span><h2><a class="reference internal" href="#module-core.opsim_objectbase" title="core.opsim_objectbase"><code class="xref py py-mod docutils literal"><span class="pre">core.opsim_objectbase</span></code></a><a class="headerlink" href="#module-core.opsim_objectbase" title="Permalink to this headline">¶</a></h2>
+<p>This is the base class of all DOSSS objects.</p>
+<p>In order to extend DOSSS by adding new objects, create a new class derived from <a class="reference internal" href="#core.opsim_objectbase.DOSSSObject" title="core.opsim_objectbase.DOSSSObject"><code class="xref py py-class docutils literal"><span class="pre">DOSSSObject</span></code></a> and overwrite the following four interface functions:</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.GetDisplayPoints" title="core.opsim_objectbase.DOSSSObject.GetDisplayPoints"><code class="xref py py-func docutils literal"><span class="pre">GetDisplayPoints()</span></code></a>: </dt>
+<dd><p class="first last">Returns a list of points for drawing the object into the ClientDC.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.Intersection" title="core.opsim_objectbase.DOSSSObject.Intersection"><code class="xref py py-func docutils literal"><span class="pre">Intersection()</span></code></a>: </dt>
+<dd><p class="first last">Returns some information about the intersection with a light ray: intersection point, distance of travel, emerging rays.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.ShowPropertyDialog" title="core.opsim_objectbase.DOSSSObject.ShowPropertyDialog"><code class="xref py py-func docutils literal"><span class="pre">ShowPropertyDialog()</span></code></a>:</dt>
+<dd><p class="first last">Show the property dialog box for the object.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.GetLight" title="core.opsim_objectbase.DOSSSObject.GetLight"><code class="xref py py-func docutils literal"><span class="pre">GetLight()</span></code></a>:</dt>
+<dd><p class="first last">Returns a list of light rays if the object is a light source.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>In addition, you have to provide a unique name / identifier for the object in the <a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.name" title="core.opsim_objectbase.DOSSSObject.name"><code class="xref py py-attr docutils literal"><span class="pre">name</span></code></a> class attribute, which will then be used in the objects menu.</p>
+<dl class="class">
+<dt id="core.opsim_objectbase.DOSSSObject">
+<em class="property">class </em><code class="descclassname">core.opsim_objectbase.</code><code class="descname">DOSSSObject</code><span class="sig-paren">(</span><em>xpos=0</em>, <em>ypos=0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>DOSSS object base class. All objects have to be derived from this class.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xpos</strong> (<em>float</em>) &#8211; x-coordinate of object center in laboratory frame.</li>
+<li><strong>ypos</strong> (<em>float</em>) &#8211; y-coordinate of object center in laboratory frame.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.CalculateBoundingBox">
+<code class="descname">CalculateBoundingBox</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.CalculateBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the bounding box around a set of points.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> (<em>list</em>) &#8211; List of object points like corners, etc.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Bounding box [minx, miny, maxx, maxy] containing all points.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.Draw">
+<code class="descname">Draw</code><span class="sig-paren">(</span><em>dc</em>, <em>zoom</em>, <em>x0</em>, <em>y0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.Draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the object to the client DC.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dc</strong> (<em>wx.DC</em>) &#8211; Paint DC.</li>
+<li><strong>zoom</strong> (<em>float</em>) &#8211; Zoom level (1 is no zoom).</li>
+<li><strong>x0</strong> (<em>float</em>) &#8211; x-coordinate of origin of current view in laboratory frame.</li>
+<li><strong>y0</strong> (<em>float</em>) &#8211; y-coordinate of origin of current view in laboratory frame.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.GetDisplayPoints">
+<code class="descname">GetDisplayPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.GetDisplayPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of <em>wx.Points</em> which contain the coordinates of the object&#8217;s points/corners in the object&#8217;s coordinate system for displaying on screen as polyline. These are subsequently mirrored, rotated and translated according to the object properties and finally projected onto the screen. These points are only for drawing the object and should be chosen such that the function of the object becomes evident.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This function needs to be overwritten by your object class.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.GetLight">
+<code class="descname">GetLight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.GetLight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of DOSSS_LightRay - objects emitted from the object. This function applies only for light sources and for an object to be a light source, the <em>lightsource</em> flag has to be set.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This function needs to be overwritten by your object class if it is a light source.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.Intersection">
+<code class="descname">Intersection</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.Intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test for intersection between a line and the current object. If there are several intersections, return the one closest to the light rays origin, i.e., with the smallest lambda value.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This function needs to be overwritten by your object class.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<a class="reference internal" href="code_geo.html#core.opsim_geo.DOSSSLine" title="core.opsim_geo.DOSSSLine"><em>DOSSSLine</em></a>) &#8211; The light ray.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><ul class="simple">
+<li>point of intersection, if any (DOSSSVector or None)</li>
+<li>distance from base to intersection (float)</li>
+<li>list of emerging rays, e.g., transmitted and/or reflected (list of DOSSSLine)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.ProjectDisplayPoints">
+<code class="descname">ProjectDisplayPoints</code><span class="sig-paren">(</span><em>points</em>, <em>ox</em>, <em>oy</em>, <em>zoom</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.ProjectDisplayPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply rotation, mirror and translation operations to set of points and return coordinates in client system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> (<em>list</em>) &#8211; List of points.</li>
+<li><strong>ox</strong> (<em>float</em>) &#8211; x-coordinate of origin of current view in laboratory frame.</li>
+<li><strong>oy</strong> (<em>float</em>) &#8211; y-coordinate of origin of current view in laboratory frame.</li>
+<li><strong>zoom</strong> (<em>float</em>) &#8211; Zoom level (1 is no zoom).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">List of points in client system.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.ProjectIntoObjectCosy">
+<code class="descname">ProjectIntoObjectCosy</code><span class="sig-paren">(</span><em>line</em>, <em>back=0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.ProjectIntoObjectCosy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Project a line or vector into the object&#8217;s coordinate system.
+This is done by applying the transformations from <a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.ProjectDisplayPoints" title="core.opsim_objectbase.DOSSSObject.ProjectDisplayPoints"><code class="xref py py-func docutils literal"><span class="pre">ProjectDisplayPoints()</span></code></a> in reverse order and without the projection into the screen system. This is a convenience wrapper around <a class="reference internal" href="#core.opsim_objectbase.DOSSSObject.project" title="core.opsim_objectbase.DOSSSObject.project"><code class="xref py py-func docutils literal"><span class="pre">project()</span></code></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>or DOSSSVector) line</strong> (<em>(DOSSSLine</em>) &#8211; Line or vector object to project.</li>
+<li><strong>back</strong> (<em>bool</em>) &#8211; Forward (False, default) or backward (True) projection.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Line or vector projected into object&#8217;s coordinate system.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.ShowPropertyDialog">
+<code class="descname">ShowPropertyDialog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.ShowPropertyDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the property dialog box for the object, which allows the user to change the objects parameters.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">This function needs to be overwritten by your object class.</p>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.opsim_objectbase.DOSSSObject.color">
+<code class="descname">color</code><em class="property"> = None</em><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>default color for drawing the object to the screen</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.get_bbox">
+<code class="descname">get_bbox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.get_bbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the bounding box.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name / category of the object. This string is used to build the object menu items.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.get_position">
+<code class="descname">get_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.get_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns current position (x,y).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.opsim_objectbase.DOSSSObject.lightsource">
+<code class="descname">lightsource</code><em class="property"> = None</em><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.lightsource" title="Permalink to this definition">¶</a></dt>
+<dd><p>set this to one/True if you want to create a light source</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.opsim_objectbase.DOSSSObject.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>overwrite this string for each new object and give it a unique identifier</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.project">
+<code class="descname">project</code><span class="sig-paren">(</span><em>ve</em>, <em>isunit=False</em>, <em>back=False</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.project" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply transformations to a vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ve</strong> (<a class="reference internal" href="code_geo.html#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Vector to be projected.</li>
+<li><strong>isunit</strong> (<em>bool</em>) &#8211; If True, treat as direction vector, otherwise as coordinate vector (default).</li>
+<li><strong>back</strong> (<em>bool</em>) &#8211; Direction of projection: True for screen-to-lab, False for lab-to-screen (default).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Transformed version of the vector.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.set_position">
+<code class="descname">set_position</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.set_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set new position (x, y) in laboratory frame.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_objectbase.DOSSSObject.svgstr">
+<code class="descname">svgstr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_objectbase.DOSSSObject.svgstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string in SVG format for exporting to vector format.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="extending.html" title="How to create new objects?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="code_geo.html" title="The Geometry Modules"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="code.html" >Documentation of Modules</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Daniel Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

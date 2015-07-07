@@ -1,0 +1,175 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Daniel’s Optics Simulation Software Suite (DOSSS) &mdash; Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation" href="#" />
+    <link rel="next" title="Using DOSSS" href="usingdosss.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usingdosss.html" title="Using DOSSS"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="#">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Daniel&#8217;s Optics Simulation Software Suite (DOSSS)</a></li>
+<li><a class="reference internal" href="#contents">Contents</a></li>
+<li><a class="reference internal" href="#licence">Licence</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usingdosss.html"
+                        title="next chapter">Using DOSSS</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="daniel-s-optics-simulation-software-suite-dosss">
+<h1>Daniel&#8217;s Optics Simulation Software Suite (DOSSS)<a class="headerlink" href="#daniel-s-optics-simulation-software-suite-dosss" title="Permalink to this headline">¶</a></h1>
+<p>Despite its grand name, DOSSS is a <em>simple 2D simulation tool</em> that quickly allows you to create optical arrangements and visualize light propagation through optical components and complex assemblies using raytracing. The propagation of the light rays is thereby governed purely by geometric optics and Snell&#8217;s law at <em>each</em> interface of an optical component. For example, there will be a difference in the optical properties of a thick and a thin lens despite them having the same focal length.</p>
+<a class="reference internal image-reference" href="_images/screenshot.png"><img alt="Screenshot of DOSSS main window." class="align-center" src="_images/screenshot.png" style="width: 320px;" /></a>
+<p>Support for wavelength-dependent optical properties is currently built in indirectly and can be controlled by setting the index of refraction for each optical component. I have planned to extend this concept by allowing light sources with multiple wavelengths and wavelength-dependent refractive indices instead of constants.</p>
+</div>
+<div class="section" id="contents">
+<h1>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="usingdosss.html">Using DOSSS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usingdosss.html#the-main-window">The Main Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingdosss.html#menu-items">Menu Items</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingdosss.html#mouse-commands">Mouse Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingdosss.html#keyboard-commands">Keyboard Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Documentation of Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code_app.html">The Application Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_geo.html">The Geometry Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_obj.html">The Object Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extending.html">How to create new objects?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="extending.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="licence">
+<h1>Licence<a class="headerlink" href="#licence" title="Permalink to this headline">¶</a></h1>
+<p>This program is free software: you can redistribute and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see &lt;<a class="reference external" href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>&gt;.</p>
+<p>Copyright 2008 Daniel Dietze &lt;<a class="reference external" href="mailto:daniel&#46;dietze&#37;&#52;&#48;berkeley&#46;edu">daniel<span>&#46;</span>dietze<span>&#64;</span>berkeley<span>&#46;</span>edu</a>&gt;.</p>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="usingdosss.html" title="Using DOSSS"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Daniel Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

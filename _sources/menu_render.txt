@@ -1,0 +1,6 @@
+Menu *Render*
+=============
+
+**Render**
+   Render the current scene using all light sources. In order for light rays to be drawn, at least one optical surface has to be visible.
+   

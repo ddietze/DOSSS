@@ -1,0 +1,198 @@
+How to create new objects?
+==========================
+
+Extending DOSSS is rather easy. To create a new object, create a new object class derived from :py:class:`DOSSSObject` and save it in a file with the exactly same name as the class object, i.e., **MyFancyObject** goes to **MyFancyObject.py**. In order for DOSSS to find your new object, place the file in the *objects* folder. The new object will then be automatically loaded and added to the library.
+
+For your object to actually do something, you have to overwrite the following four interface functions:
+
+    * :py:func:`~core.opsim_objectbase.DOSSSObject.GetDisplayPoints`: 
+        Returns a list of points for drawing the object into the ClientDC.
+
+    * :py:func:`~core.opsim_objectbase.DOSSSObject.Intersection`: 
+        Returns some information about the intersection with a light ray: intersection point, distance of travel, emerging rays.
+
+    * :py:func:`~core.opsim_objectbase.DOSSSObject.ShowPropertyDialog`:
+        Show the property dialog box for the object.
+        
+    * :py:func:`~core.opsim_objectbase.DOSSSObject.GetLight`:
+        Returns a list of light rays if the object is a light source.
+
+In addition, you have to provide a unique name / identifier for the object in the :py:attr:`~core.opsim_objectbase.DOSSSObject.name` class attribute, which will then be used in the objects menu.
+
+Example
+-------
+
+In the following I will give a short example of how to extend DOSSS by creating a new object. The code is taken from DOSSS_GlassSlab and represents a rectangular piece of glass.
+
+First, derive a new class from :py:class:`DOSSSObject`:: 
+    
+    # for the dialog box
+    import wx
+    
+    # for the object base class
+    from core.opsim_objectbase import *
+    
+    # when creating a light source, also import the following
+    from core.opsim_lightray import *    
+
+    class DOSSS_GlassSlab(DOSSSObject):
+    
+        # make sure that all parameters have default values - this is important for the automatic import
+        def __init__(self, xpos = 0, ypos = 0, width = 100, height = 20, ior = 1.5):
+            
+            # call the parent constructor
+            DOSSSObject.__init__(self, xpos, ypos)
+            
+            # assign the object's parameters
+            self.width = width
+            self.height = height
+            self.refractiveIndex = ior
+            
+            # give it a unique identifier
+            self.name = "Glass Slab"
+
+Now, you have to overwrite the interface functions. The first one is responsible for drawing the object to the screen.
+The object will be drawn as a poly line in the order the points are added to the list. The last point is automatically connected with the first one::
+
+    def GetDisplayPoints(self):
+        p = []
+        
+        # the points' coordinates have to be given in the objects coordinate system 
+        p.append([-self.width / 2, -self.height / 2])
+        p.append([+self.width / 2, -self.height / 2])
+        p.append([+self.width / 2, +self.height / 2])
+        p.append([-self.width / 2, +self.height / 2])
+        
+        return p
+
+Next, overwrite the interface function for calculating the intersection with a light ray. This function is the actual work horse and does all the work. Make sure your calculations are correct, as this function completely determines the optical properties::
+
+    def Intersection(self, line):        
+        # first, transform the light ray into the object's coordinate system
+        l = self.ProjectIntoObjectCosy(line) 
+        
+        # second, test for intersection:
+        # this is done by checking every segment of the object for intersection
+        # if a point is found, it is stored together with the distance to the rays origin
+        # and a list of emerging rays (transmitted or reflected)
+        # at the end, the point with the shortest distance along the light ray is picked and returned
+        
+        # create a set of vectors corresponding to the four corners of the glass slab
+        tl = DOSSSVector(-self.width/2, -self.height/2)
+        tr = DOSSSVector(+self.width/2, -self.height/2)
+        br = DOSSSVector(+self.width/2, +self.height/2)
+        bl = DOSSSVector(-self.width/2, +self.height/2)
+        
+        # prepare return values
+        p0 = None
+        d0 = d = -1
+        er = []
+                
+        # now test for intersection using the built in geometric functions..
+        
+        # get a line corresponding to the first (upper) side of the slab
+        lb = getLineThroughPoints(tl, tr)
+        
+        # calculate the intersection using the bounded_intersection() method, 
+        # as the intersection should lie between the two corner points
+        p = lb.bounded_intersection(l, tl, tr)
+        
+        # if there is an intersection, calculate the distance of this point along the light ray
+        if(p != None):                      
+            d = (l.a - p).length()           
+            # if it is smaller than the distance to any previously found intersection, keep this point
+            if(d > 1e-7 and (d0 == -1 or d < d0)): 
+                # distance to intersection
+                d0 = d
+                
+                # intersection point
+                p0 = p      
+                
+                # emitted rays as list 
+                # Snell() expects the surface normal to point outwards, i.e. from glass to vacuum
+                er = [DOSSSLine(p0, Snell(l.u, DOSSSVector(0, -1), self.refractiveIndex))]
+        
+        # repeat for the other sides...
+        # ...
+        # ...
+        
+        # finally, the intersection and the emitted rays have to be transformed back into the laboratory frame
+        if(p0 != None):
+            # note the 1 in the projection function; this tells DOSSS to do the reverse transformation
+            p0 = self.ProjectIntoObjectCosy(p0, 1)
+            
+            # do the same for all emerging beams
+            for i in range(len(er)):
+                er[i] = self.ProjectIntoObjectCosy(er[i], 1)                
+        
+        # return values are: [intersection point, distance of travel, [emerging rays]]
+        return [p0, d0, er]
+
+And the last function to overwrite is the property dialog. This dialog is used to control the appearance and optical properties of the object::
+
+    def ShowPropertyDialog(self):
+        
+        # first, create the options list
+        options = []
+        
+        # there are general options regarding the position
+        options.append(["Position X", self.position[0]])
+        options.append(["Position Y", self.position[1]])
+        options.append(["Rotate", self.alpha])
+        options.append(["FlipH", self.flip_h])
+        options.append(["FlipV", self.flip_v])
+        
+        # and object specific properties, like width, height and refractive index
+        options.append(["Width", self.width, 1])
+        options.append(["Height", self.height, 1])
+        options.append(["Refractive Index", self.refractiveIndex, 1])
+        
+        # second, open the standard dialog with the options list as parameter
+        dlg = DOSSS_PropertyDialog(options)
+        
+        if (dlg.ShowModal() == wx.ID_OK):
+        
+            # third, read out the new values and store
+            options = dlg.getOptions()
+
+            self.position[0] = options[0]
+            self.position[1] = options[1]
+            self.alpha = options[2]
+            self.flip_h = options[3]
+            self.flip_v = options[4]
+            self.width = options[5]
+            self.height = options[6]            
+            self.refractiveIndex = options[7] 
+        
+        # finally, destroy the dialog object
+        dlg.Destroy()
+
+If you are about to create a new light source, you also have to overwrite the following function (code example taken from DOSSS_ParallelLight)::
+
+    # this function applies only for light sources
+    # returns a list of DOSSS_LightRay - objects
+    # for an object to be a light source, the 'lightsource' flag has to be set
+    def GetLight(self):      
+        rays = []
+        
+        if self.noRays > 1:
+            a0 = -self.width / 2
+            da = self.width / (float(self.noRays) - 1.0)
+            print a0, da
+        else:
+            a0 = 0
+            da = 0
+        
+        for i in range(int(self.noRays)):                                    
+            av = DOSSSVector(0, a0)
+            uv = DOSSSVector(1, 0)
+            a0 = -self.width / 2 + (i + 1) * da
+            # project vectors in LabSpace
+            uv = self.project(uv, 1, 1)
+            av = self.project(av, 0, 1)                
+            
+            # create a list of DOSSS_LightRays
+            rays.append(DOSSS_LightRay(av.x(), av.y(), uv.x(), uv.y()))
+            
+        return rays
+        

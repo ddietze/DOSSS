@@ -1,0 +1,29 @@
+The Application Modules
+=======================
+
+:py:mod:`opsim`
+---------------
+
+.. automodule:: opsim
+    :members:
+
+
+:py:mod:`core.opsim_mainframe`
+------------------------------------
+
+.. automodule:: core.opsim_mainframe
+    :members:
+
+
+:py:mod:`core.opsim_objects`
+----------------------------------
+
+.. automodule:: core.opsim_objects
+    :members:
+
+
+:py:mod:`core.opsim_property_dialog`
+------------------------------------------
+
+.. automodule:: core.opsim_property_dialog
+    :members:

@@ -1,0 +1,14 @@
+Menu *Object*
+=============
+
+**New..**
+   Opens a sub-menu with a list of all supported objects found in the *objects*-folder. This list is automatically populated. When an object is created, it is placed at the center of the current view.
+   
+**Clone**
+   Make a copy of the selected object and place it slightly offset to the original object.
+   
+**Delete**
+   Delete the selected object. There is no confirmation dialog and no UNDO!
+   
+**Move forward**, **Move backward**
+   Move the selected object one step forwards or backwards along the z-axis. This controls which objects are drawn on top of others.

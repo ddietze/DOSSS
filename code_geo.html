@@ -1,0 +1,461 @@
+
+
+<!doctype html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The Geometry Modules &mdash; Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</title>
+    
+    <link rel="stylesheet" href="_static/bizstyle.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.4',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/bizstyle.js"></script>
+    <link rel="shortcut icon" href="_static/icon.ico"/>
+    <link rel="top" title="Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation" href="index.html" />
+    <link rel="up" title="Documentation of Modules" href="code.html" />
+    <link rel="next" title="The Object Modules" href="code_obj.html" />
+    <link rel="prev" title="The Application Modules" href="code_app.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="_static/css3-mediaqueries.js"></script>
+    <![endif]-->
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code_obj.html" title="The Object Modules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="code_app.html" title="The Application Modules"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="code.html" accesskey="U">Documentation of Modules</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/logo.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Geometry Modules</a><ul>
+<li><a class="reference internal" href="#module-core.opsim_geo"><code class="docutils literal"><span class="pre">core.opsim_geo</span></code></a></li>
+<li><a class="reference internal" href="#module-core.opsim_lightray"><code class="docutils literal"><span class="pre">core.opsim_lightray</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="code_app.html"
+                        title="previous chapter">The Application Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="code_obj.html"
+                        title="next chapter">The Object Modules</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code_geo.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-geometry-modules">
+<h1>The Geometry Modules<a class="headerlink" href="#the-geometry-modules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-core.opsim_geo">
+<span id="core-opsim-geo"></span><h2><a class="reference internal" href="#module-core.opsim_geo" title="core.opsim_geo"><code class="xref py py-mod docutils literal"><span class="pre">core.opsim_geo</span></code></a><a class="headerlink" href="#module-core.opsim_geo" title="Permalink to this headline">¶</a></h2>
+<p>Definitions / declarations for geometrical objects and functions used in DOSSS.</p>
+<dl class="class">
+<dt id="core.opsim_geo.DOSSSLine">
+<em class="property">class </em><code class="descclassname">core.opsim_geo.</code><code class="descname">DOSSSLine</code><span class="sig-paren">(</span><em>a=None</em>, <em>u=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Represents a line of the form P = a + lambda * u where u gives the direction of the line and a is the base of the line. Distances along the line are measured relative to this point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>a</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Base point of the line. If None, it defaults to (0,0).</li>
+<li><strong>u</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Direction of the line. If None, it defaults to (1,0).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.bounded_intersection">
+<code class="descname">bounded_intersection</code><span class="sig-paren">(</span><em>l</em>, <em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.bounded_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the intersection of a line l (DOSSSLine) with the current line (DOSSSVector) only if it lies between the points p1 (DOSSSVector) and p2 (DOSSSVector), otherwise returns None.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.contains_point">
+<code class="descname">contains_point</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.contains_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if point p is part of the line, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.get_normal">
+<code class="descname">get_normal</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.get_normal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a line orthogonal to this line through the specified point p (DOSSSVector).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.get_point">
+<code class="descname">get_point</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.get_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return point for lambda value l.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.intersect">
+<code class="descname">intersect</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.intersect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the intersection of a line with the current line (DOSSSVector) or None if the lines are parallel or identical.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.isLambdaPositiveForPoint">
+<code class="descname">isLambdaPositiveForPoint</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.isLambdaPositiveForPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if point p (DOSSSVector) is in the positive half space of the line, i.e. lambda is positive. Returns False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.mirror">
+<code class="descname">mirror</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.mirror" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mirror the current line on another line l. The new base point is the intersection of the two lines.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSLine.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>alpha</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSLine.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of the current line rotated by an angle alpha (in degrees).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="core.opsim_geo.DOSSSVector">
+<em class="property">class </em><code class="descclassname">core.opsim_geo.</code><code class="descname">DOSSSVector</code><span class="sig-paren">(</span><em>nx=0</em>, <em>ny=0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector" title="Permalink to this definition">¶</a></dt>
+<dd><p>A 2d vector class that supports basic arithmetic operations (+, -, <cite>*</cite>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>nx</strong> (<em>float</em>) &#8211; x-component (optional).</li>
+<li><strong>ny</strong> (<em>float</em>) &#8211; y-component (optional).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.isNull">
+<code class="descname">isNull</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.isNull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if vector is identical to zero, False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.length">
+<code class="descname">length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return length of vector.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.rotate">
+<code class="descname">rotate</code><span class="sig-paren">(</span><em>theta</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>theta</strong> (<em>float</em>) &#8211; Angle in degrees.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Rotated vector.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.setx">
+<code class="descname">setx</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.setx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite x-component of vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<em>float</em>) &#8211; New value for x-component.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.sety">
+<code class="descname">sety</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.sety" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite y-component of vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>y</strong> (<em>float</em>) &#8211; New value for y-component.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.unit">
+<code class="descname">unit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a unit vector with the same orientation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.x">
+<code class="descname">x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns x-component of vector. If absolute value is below 1e-10, it returns 0.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_geo.DOSSSVector.y">
+<code class="descname">y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.DOSSSVector.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns y-component of vector. If absolute value is below 1e-10, it returns 0.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="core.opsim_geo.IntersectionWithParabola">
+<code class="descclassname">core.opsim_geo.</code><code class="descname">IntersectionWithParabola</code><span class="sig-paren">(</span><em>line</em>, <em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.IntersectionWithParabola" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the intersection between a line and a parabola.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>line</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSLine" title="core.opsim_geo.DOSSSLine"><em>DOSSSLine</em></a>) &#8211; The line.</li>
+<li><strong>f</strong> (<em>float</em>) &#8211; Focal length of the parabola.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Intersection(s) (Sequence of DOSSSVectors of length [0, 1, 2])</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="core.opsim_geo.IntersectionWithSphere">
+<code class="descclassname">core.opsim_geo.</code><code class="descname">IntersectionWithSphere</code><span class="sig-paren">(</span><em>line</em>, <em>x0</em>, <em>R</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.IntersectionWithSphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the intersection between a line and a sphere.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>line</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSLine" title="core.opsim_geo.DOSSSLine"><em>DOSSSLine</em></a>) &#8211; The line.</li>
+<li><strong>x0</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Center of the sphere.</li>
+<li><strong>R</strong> (<em>float</em>) &#8211; Radius of the sphere.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Intersection(s) (Sequence of DOSSSVectors of length [0, 1, 2]).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="core.opsim_geo.Snell">
+<code class="descclassname">core.opsim_geo.</code><code class="descname">Snell</code><span class="sig-paren">(</span><em>u</em>, <em>n</em>, <em>ior=0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.Snell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply Snell&#8217;s law to a vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>u</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Incident vector.</li>
+<li><strong>n</strong> (<a class="reference internal" href="#core.opsim_geo.DOSSSVector" title="core.opsim_geo.DOSSSVector"><em>DOSSSVector</em></a>) &#8211; Surface normal vector.</li>
+<li><strong>ior</strong> (<em>float</em>) &#8211; Index of refraction of the refracting object (ior != 0). Set to zero to calculate reflected vector.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Refracted (ior != 0) or reflected (ior == 0) vector.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="core.opsim_geo.getLineThroughPoints">
+<code class="descclassname">core.opsim_geo.</code><code class="descname">getLineThroughPoints</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_geo.getLineThroughPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a DOSSSLine object defined by two points p1 (DOSSSVector) and p2 (DOSSSVector).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-core.opsim_lightray">
+<span id="core-opsim-lightray"></span><h2><a class="reference internal" href="#module-core.opsim_lightray" title="core.opsim_lightray"><code class="xref py py-mod docutils literal"><span class="pre">core.opsim_lightray</span></code></a><a class="headerlink" href="#module-core.opsim_lightray" title="Permalink to this headline">¶</a></h2>
+<p>Definitions / declarations for light rays for use in DOSSS.</p>
+<dl class="class">
+<dt id="core.opsim_lightray.DOSSS_LightRay">
+<em class="property">class </em><code class="descclassname">core.opsim_lightray.</code><code class="descname">DOSSS_LightRay</code><span class="sig-paren">(</span><em>posx=0</em>, <em>posy=0</em>, <em>ux=1</em>, <em>uy=0</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.DOSSS_LightRay" title="Permalink to this definition">¶</a></dt>
+<dd><p>A light ray class used for raytracing in DOSSS.
+All coordinates are given in laboratory system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>posx</strong> (<em>float</em>) &#8211; x-coordinate of the base point.</li>
+<li><strong>posy</strong> (<em>float</em>) &#8211; y-coordinate of the base point.</li>
+<li><strong>ux</strong> (<em>float</em>) &#8211; x-component of the direction vector.</li>
+<li><strong>uy</strong> (<em>float</em>) &#8211; y-component of the direction vector.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="core.opsim_lightray.DOSSS_LightRay.ContinueRay">
+<code class="descname">ContinueRay</code><span class="sig-paren">(</span><em>dc</em>, <em>px</em>, <em>py</em>, <em>ux</em>, <em>uy</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.DOSSS_LightRay.ContinueRay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the continuation of the light ray beyond the last intersecting object for proper display on screen.</p>
+<p>All coordinates are given in DC client system, i.e. range from 0 to size of screen in px.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dc</strong> (<em>wx.DC</em>) &#8211; Paint DC.</li>
+<li><strong>px</strong> (<em>float</em>) &#8211; x-coordinate of the base point.</li>
+<li><strong>py</strong> (<em>float</em>) &#8211; y-coordinate of the base point.</li>
+<li><strong>ux</strong> (<em>float</em>) &#8211; x-component of the direction vector.</li>
+<li><strong>uy</strong> (<em>float</em>) &#8211; y-component of the direction vector.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Lambda value of intersection with screen boundary (float).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_lightray.DOSSS_LightRay.Draw">
+<code class="descname">Draw</code><span class="sig-paren">(</span><em>dc</em>, <em>zoom</em>, <em>ox</em>, <em>oy</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.DOSSS_LightRay.Draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the light ray to the DC client.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dc</strong> (<em>wx.DC</em>) &#8211; Paint DC.</li>
+<li><strong>zoom</strong> (<em>float</em>) &#8211; Zoom level, where 1 is no zoom.</li>
+<li><strong>ox</strong> (<em>float</em>) &#8211; x-coordinate of origin of current view in laboratory frame.</li>
+<li><strong>oy</strong> (<em>float</em>) &#8211; y-coordinate of origin of current view in laboratory frame.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_lightray.DOSSS_LightRay.getCurLine">
+<code class="descname">getCurLine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.DOSSS_LightRay.getCurLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns DOSSSLine object for current part of the beam.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.opsim_lightray.DOSSS_LightRay.svgstr">
+<code class="descname">svgstr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.DOSSS_LightRay.svgstr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a string in SVG format for exporting to vector format.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="core.opsim_lightray.fromLine">
+<code class="descclassname">core.opsim_lightray.</code><code class="descname">fromLine</code><span class="sig-paren">(</span><em>l</em><span class="sig-paren">)</span><a class="headerlink" href="#core.opsim_lightray.fromLine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a DOSSSLine object into a DOSSS_LightRay object.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="code_obj.html" title="The Object Modules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="code_app.html" title="The Application Modules"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Daniel&#39;s Optics Simulation Software Suite (DOSSS) 1.4 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="code.html" >Documentation of Modules</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Daniel Dietze.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
