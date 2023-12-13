@@ -25,7 +25,7 @@ Manages object import into DOSSS. All objects that were placed in the *objects* 
 """
 import glob
 import os
-import imp
+import sys
 
 _dict_of_objects = {}     #: a dictionary mapping object names to modules
 
@@ -40,10 +40,16 @@ def load_from_file(filepath):
     
     mod_name, file_ext = os.path.splitext(os.path.split(filepath)[-1])
 
-    if file_ext.lower() == '.pyc':
-        py_mod = imp.load_compiled(mod_name, filepath)
-    elif file_ext.lower() == '.py':
-        py_mod = imp.load_source(mod_name, filepath)
+    py_mod = None
+    if sys.version_info[:2] >= (3, 3):
+        from importlib.machinery import SourceFileLoader
+        py_mod = SourceFileLoader(mod_name, filepath).load_module()
+    else:
+        import imp
+        if file_ext.lower() == '.pyc':
+            py_mod = imp.load_compiled(mod_name, filepath)
+        elif file_ext.lower() == '.py':
+            py_mod = imp.load_source(mod_name, filepath)
 
     class_inst = getattr(py_mod, mod_name)()
 

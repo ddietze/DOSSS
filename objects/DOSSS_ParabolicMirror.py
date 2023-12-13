@@ -97,7 +97,7 @@ class DOSSS_ParabolicMirror(DOSSSObject):
         # mirror 
         ps = IntersectionWithParabola(l, self.focallength)
         for p in ps:
-            print "found intersection", p
+            print("found intersection", p)
             if(p != None and abs(p.x()) <= self.aperture / 2):             
                 d = (l.a - p).length()
                 if(d > 1e-7 and (d0 == -1 or d < d0)):                

@@ -82,7 +82,7 @@ class DOSSS_ParallelLight(DOSSSObject):
         if self.noRays > 1:
             a0 = -self.width / 2
             da = self.width / (float(self.noRays) - 1.0)
-            print a0, da
+            print(a0, da)
         else:
             a0 = 0
             da = 0

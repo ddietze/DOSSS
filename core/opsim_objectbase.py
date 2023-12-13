@@ -133,7 +133,7 @@ class DOSSSObject:
             p[0] = (p[0] - ox) * zoom
             p[1] = (p[1] - oy) * zoom
             # append
-            newp.append(wx.Point(p[0], p[1]))
+            newp.append(wx.Point(int(p[0]), int(p[1])))
         
         return newp
         
@@ -156,8 +156,8 @@ class DOSSSObject:
         dc.DrawPolygon(p)
         # origin cross
         dc.SetPen(wx.Pen("Green", 1))
-        ox = (self.position[0] - x0) * zoom
-        oy = (self.position[1] - y0) * zoom
+        ox = int(round((self.position[0] - x0) * zoom))
+        oy = int(round((self.position[1] - y0) * zoom))
         of = 4 * zoom
         dc.DrawLine(ox-of, oy, ox+of, oy)
         dc.DrawLine(ox, oy-of, ox, oy+of)
