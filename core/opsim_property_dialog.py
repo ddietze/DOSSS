@@ -44,25 +44,25 @@ class DOSSS_PropertyDialog(wx.Dialog):
             posSizer = wx.BoxSizer(wx.HORIZONTAL)        
             posSizer.Add(wx.StaticText(self, -1, "Position:"), 1, wx.ALIGN_LEFT | wx.ALL, 2)
             self.input.append(wx.TextCtrl(self, -1, str(options[0][1]), size=(88, -1), style=wx.TE_RIGHT))
-            posSizer.Add(self.input[0], 0, wx.ALIGN_RIGHT | wx.ALL, 2)
+            posSizer.Add(self.input[0], 0, wx.ALL, 2)
             self.input.append(wx.TextCtrl(self, -1, str(options[1][1]), size=(88, -1), style=wx.TE_RIGHT))
-            posSizer.Add(self.input[1], 0, wx.ALIGN_RIGHT | wx.ALL, 2)
+            posSizer.Add(self.input[1], 0, wx.ALL, 2)
             inputSizer.Add(posSizer, 1, wx.ALIGN_LEFT | wx.ALIGN_RIGHT | wx.ALL, 0)
             
             rotSizer = wx.BoxSizer(wx.HORIZONTAL)        
             rotSizer.Add(wx.StaticText(self, -1, "Rotation (deg):"), 1, wx.ALIGN_LEFT | wx.ALL, 2)
             self.input.append(wx.TextCtrl(self, -1, str(options[2][1]), size=(180, -1), style=wx.TE_RIGHT))
-            rotSizer.Add(self.input[2], 0, wx.ALIGN_RIGHT | wx.ALL, 2)
+            rotSizer.Add(self.input[2], 0, wx.ALL, 2)
             inputSizer.Add(rotSizer, 1, wx.ALIGN_LEFT | wx.ALIGN_RIGHT | wx.ALL, 0)
             
             flipSizer = wx.BoxSizer(wx.HORIZONTAL)        
             flipSizer.Add(wx.StaticText(self, -1, "Mirror:"), 1, wx.ALIGN_LEFT | wx.ALL, 2)
             self.input.append(wx.CheckBox(self, -1, "horizontal", size=(88, -1), style=wx.TE_RIGHT))
-            self.input[3].SetValue(options[3][1])
-            flipSizer.Add(self.input[3], 0, wx.ALIGN_RIGHT | wx.ALL, 2)        
+            self.input[3].SetValue(int(options[3][1]))
+            flipSizer.Add(self.input[3], 0, wx.ALL, 2)        
             self.input.append(wx.CheckBox(self, -1, "vertical", size=(88, -1), style=wx.TE_RIGHT))
-            self.input[4].SetValue(options[4][1])
-            flipSizer.Add(self.input[4], 0, wx.ALIGN_RIGHT | wx.ALL, 2)
+            self.input[4].SetValue(int(options[4][1]))
+            flipSizer.Add(self.input[4], 0, wx.ALL, 2)
             inputSizer.Add(flipSizer, 1, wx.ALIGN_LEFT | wx.ALIGN_RIGHT | wx.ALL, 0)
             
             # line
@@ -77,7 +77,7 @@ class DOSSS_PropertyDialog(wx.Dialog):
                     sizer.Add(label, 1, wx.ALIGN_LEFT | wx.ALL, 2)
                     if(len(op) > 1):
                         self.input.append(wx.TextCtrl(self, -1, str(op[1]), size=(180, -1), style=wx.TE_RIGHT))
-                        sizer.Add(self.input[i], 0, wx.ALIGN_RIGHT | wx.ALL, 2)                
+                        sizer.Add(self.input[i], 0, wx.ALL, 2)                
                     inputSizer.Add(sizer, 1, wx.ALIGN_LEFT | wx.ALIGN_RIGHT | wx.ALL, 0)
         else:
             inputSizer.Add(wx.StaticText(self, -1, "This Object Has No Properties!"))

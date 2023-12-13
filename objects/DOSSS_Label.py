@@ -37,7 +37,10 @@ class DOSSS_Label(DOSSSObject):
         
         # call base-function
         DOSSSObject.Draw(self, dc, zoom, x0, y0)    
-        dc.DrawRotatedText(self.text, (self.position[0] + 2 - x0) * zoom, (self.position[1] + 2 - y0) * zoom, -self.alpha)
+        dc.DrawRotatedText(self.text,
+                           int(round((self.position[0] + 2 - x0) * zoom)),
+                           int(round((self.position[1] + 2 - y0) * zoom)),
+                           -self.alpha)
     
     def svgstr(self):
         svg = "<g style=\"stroke-width:0.1mm; stroke:blue; fill:white; fill-opacity:1.0;\">\n";

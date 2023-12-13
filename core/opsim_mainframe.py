@@ -102,7 +102,7 @@ class MainFrame(wx.Frame):
     
     # mouse events
     def OnMotion(self, event):
-        pos = event.GetPositionTuple()
+        pos = tuple(event.GetPosition())
         # V1.1 new: rescale the mouse coordinates to scene coordinates
         nposx = pos[0] / self.zoom + self.origin_x
         nposy = pos[1] / self.zoom + self.origin_y		
@@ -133,9 +133,12 @@ class MainFrame(wx.Frame):
     
     def OnRightDown(self, event):                                
         self.setHint("Scroll Mode")
-        self.mouse_pos = event.GetPositionTuple()
+        self.mouse_pos = tuple(event.GetPosition())
         self.old_origin = (self.origin_x, self.origin_y)
-        self.CaptureMouse()                
+        try:
+            self.CaptureMouse()
+        except Exception as e:
+            print("Error onRightDown when capturing mouse:", e)
         
     def OnRightUp(self, event):
         if self.HasCapture():                       
@@ -144,7 +147,7 @@ class MainFrame(wx.Frame):
         
     def OnLeftDown(self, event):
         # select objects with mouse click
-        pos = event.GetPositionTuple()
+        pos = tuple(event.GetPosition())
         onr = self.getObjectUnderMouse(pos)
             
         if(onr != -1):
@@ -172,7 +175,7 @@ class MainFrame(wx.Frame):
         event.Skip()
     
     def OnLeftDClick(self, event):
-        pos = event.GetPositionTuple()
+        pos = tuple(event.GetPosition())
         onr = self.getObjectUnderMouse(pos)
         if(onr != -1):
             self.objects[onr].ShowPropertyDialog()
@@ -240,7 +243,7 @@ class MainFrame(wx.Frame):
             menuNewObject.Append(i, ob)
             self.Bind(wx.EVT_MENU, self.OnNewObject, id = i)
             i = i + 1
-        menuObject.AppendMenu(9, "New...", menuNewObject)
+        menuObject.Append(9, "New...", menuNewObject)
         menuObject.Append(11, "Clone (STRG + c)")
         menuObject.Append(10, "Delete (DEL)")
         menuObject.AppendSeparator()
@@ -488,7 +491,7 @@ class MainFrame(wx.Frame):
         #event.Skip()
         try:
             # get object-type
-            itemId = objectList()[event.GetId() - 1000]
+            itemId = list(objectList())[event.GetId() - 1000]
             print("Create", itemId)
             
             # get lab coordinates of center
@@ -506,7 +509,9 @@ class MainFrame(wx.Frame):
             self.display_rays = 0
             self.canClose = 0
             self.InitBuffer()
-        except:
+        except Exception as e:
+            print("Error creating new object:", e)
+            raise
             pass
             
     def OnObjectDelete(self, event):        
@@ -621,7 +626,7 @@ class MainFrame(wx.Frame):
     
     def InitBuffer(self):
         size = self.GetClientSize()
-        self.buffer = wx.EmptyBitmap(size.width, size.height)                
+        self.buffer = wx.Bitmap(size.width, size.height)                
         self.reInitBuffer = False
         # create buffered dc
         dc = wx.BufferedDC(None, self.buffer)
@@ -651,17 +656,17 @@ class MainFrame(wx.Frame):
         step = int(floor(self.gridStepSize * self.zoom))
         # draw coordinate system
         dc.DrawLine(orgx, orgy, orgx + 2 * step, orgy)
-        dc.DrawLine(orgx + 2 * step, orgy, orgx + 1.5 * step, orgy + 0.5 * step)
-        dc.DrawLine(orgx + 2 * step, orgy, orgx + 1.5 * step, orgy - 0.5 * step)
-        dc.DrawLine(orgx + 2.5 * step, orgy - 0.5 * step, orgx + 3 * step + 1, orgy + 0.5 * step + 1)
-        dc.DrawLine(orgx + 2.5 * step, orgy + 0.5 * step, orgx + 3 * step + 1, orgy - 0.5 * step + 1)
+        dc.DrawLine(orgx + 2 * step, orgy, int(round(orgx + 1.5 * step)), int(round(orgy + 0.5 * step)))
+        dc.DrawLine(orgx + 2 * step, orgy, int(round(orgx + 1.5 * step)), int(round(orgy - 0.5 * step)))
+        dc.DrawLine(int(round(orgx + 2.5 * step)), int(round(orgy - 0.5 * step)), int(round(orgx + 3 * step + 1)), int(round(orgy + 0.5 * step + 1)))
+        dc.DrawLine(int(round(orgx + 2.5 * step)), int(round(orgy + 0.5 * step)), int(round(orgx + 3 * step + 1)), int(round(orgy - 0.5 * step + 1)))
 
         dc.DrawLine(orgx, orgy, orgx, orgy + 2 * step)
-        dc.DrawLine(orgx, orgy + 2 * step, orgx + 0.5 * step, orgy + 1.5 * step)
-        dc.DrawLine(orgx, orgy + 2 * step, orgx - 0.5 * step, orgy + 1.5 * step)
-        dc.DrawLine(orgx - 0.25 * step, orgy + 3 * step, orgx + 1, orgy + 3.5 * step + 1)
-        dc.DrawLine(orgx + 0.25 * step, orgy + 3 * step, orgx - 0.25 * step + 1, orgy + 4 * step + 1)
-        dc.DrawCircle(orgx, orgy, 0.5 * step)
+        dc.DrawLine(orgx, orgy + 2 * step, int(round(orgx + 0.5 * step)), int(round(orgy + 1.5 * step)))
+        dc.DrawLine(orgx, orgy + 2 * step, int(round(orgx - 0.5 * step)), int(round(orgy + 1.5 * step)))
+        dc.DrawLine(int(round(orgx - 0.25 * step)), int(round(orgy + 3 * step)), orgx + 1, int(round(orgy + 3.5 * step + 1)))
+        dc.DrawLine(int(round(orgx + 0.25 * step)), orgy + 3 * step, int(round(orgx - 0.25 * step + 1)), orgy + 4 * step + 1)
+        dc.DrawCircle(orgx, orgy, int(round(0.5 * step)))
         # draw grid points
         for x in range(ox, dw, step):
             for y in range(oy, dh, step):

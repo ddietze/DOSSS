@@ -96,14 +96,14 @@ class DOSSS_LightRay:
         
         # create list of points
         p = []
-        p.append(wx.Point((self.p0.x() - ox) * zoom, (self.p0.y() - oy) * zoom))
+        p.append(wx.Point(int((self.p0.x() - ox) * zoom), int((self.p0.y() - oy) * zoom)))
         if(self.p1 != None):
-            p.append(wx.Point((self.p1.x() - ox) * zoom, (self.p1.y() - oy) * zoom))
+            p.append(wx.Point(int((self.p1.x() - ox) * zoom), int((self.p1.y() - oy) * zoom)))
         else:            
             if not self.u.isNull():
                 p1 = self.ContinueRay(dc, (self.p0.x() - ox) * zoom, (self.p0.y() - oy) * zoom, self.u.x(), self.u.y())                
                 if p1 != None:
-                    p.append(wx.Point(p1.x(), p1.y()))       
+                    p.append(wx.Point(int(p1.x()), int(p1.y())))       
         dc.DrawLines(p)
     
     def svgstr(self):		# returns a string in SVG format for exporting to vector format

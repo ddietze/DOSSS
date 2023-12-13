@@ -97,7 +97,7 @@ class DOSSS_PointLight(DOSSSObject):
         
         for i in range(int(self.noRays)):
             a = alpha0 + float(i) * dalpha
-            print a
+            print(a)
             a = a * pi / 180.0
             x = sin(a)
             y = -cos(a)
